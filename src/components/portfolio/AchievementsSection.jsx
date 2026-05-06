@@ -8,17 +8,13 @@ export default function AchievementsSection() {
 
 	return (
 		<section style={{ padding: '60px 0 80px' }}>
-			<div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 24px' }}>
+			<div
+				className="section-inner"
+				style={{ maxWidth: 1200, margin: '0 auto', padding: '0 24px' }}
+			>
 				<Divider style={{ marginBottom: 60 }} />
 
-				<div
-					style={{
-						display: 'grid',
-						gridTemplateColumns: '1fr 2fr',
-						gap: 80,
-						alignItems: 'start',
-					}}
-				>
+				<div className="section-two-col">
 					{/* Sol: başlık */}
 					<div ref={titleRef} className="reveal-left">
 						<SectionTitle label="Başarılar" title="Achievements" />

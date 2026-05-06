@@ -813,16 +813,26 @@ button {
    position:fixed is on the .toast-wrap itself — overflow-x:hidden
    was on body which broke fixed positioning on iOS Safari.
    Moved overflow-x:hidden to html instead (safe for fixed children).
+
+   iOS FIX: will-change:transform causes position:fixed to detach from
+   viewport on iOS Safari when browser chrome (address bar) animates.
+   Replaced with transform:translate3d(0,0,0) which forces GPU layer
+   without triggering the containment bug.
 ──────────────────────────────────────────────────────────── */
 
 .toast-wrap {
 	position: fixed;
 	bottom: 24px;
+	/* Safe area inset for notched iPhones */
+	bottom: max(24px, calc(env(safe-area-inset-bottom, 0px) + 16px));
 	right: 24px;
 	z-index: 9999;
 	width: 340px;
-	/* Force compositing layer — prevents clipping by ancestor transforms */
-	will-change: transform;
+	/* GPU compositing WITHOUT the will-change iOS containment bug */
+	transform: translate3d(0, 0, 0);
+	-webkit-transform: translate3d(0, 0, 0);
+	backface-visibility: hidden;
+	-webkit-backface-visibility: hidden;
 	pointer-events: none;
 }
 .toast-box {
@@ -863,7 +873,39 @@ button {
 }
 
 /* ────────────────────────────────────────────────────────────
-   RESPONSIVE
+   SECTION TWO-COLUMN GRID
+   Achievements ve Skills bölümlerinde kullanılan 2 sütunlu grid.
+   Mobilde tek sütuna düşer.
+──────────────────────────────────────────────────────────── */
+
+.section-two-col {
+	display: grid;
+	grid-template-columns: 1fr 2fr;
+	gap: 80px;
+	align-items: start;
+}
+
+.section-two-col--equal {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 80px;
+	align-items: start;
+}
+
+/* ────────────────────────────────────────────────────────────
+   FOOTER MOBILE
+──────────────────────────────────────────────────────────── */
+
+.footer-inner {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	flex-wrap: wrap;
+	row-gap: 12px;
+}
+
+/* ────────────────────────────────────────────────────────────
+   RESPONSIVE — 768px (tablet)
 ──────────────────────────────────────────────────────────── */
 
 @media (max-width: 768px) {
@@ -873,22 +915,109 @@ button {
 	.reveal-child {
 		transform: translateY(24px);
 	}
+
+	/* Section grids: 2 col → 1 col */
+	.section-two-col,
+	.section-two-col--equal {
+		grid-template-columns: 1fr !important;
+		gap: 40px !important;
+	}
+
+	/* Section padding azalt */
+	section {
+		padding-left: 0 !important;
+		padding-right: 0 !important;
+	}
 }
+
+/* ────────────────────────────────────────────────────────────
+   RESPONSIVE — 640px (mobile)
+──────────────────────────────────────────────────────────── */
 
 @media (max-width: 640px) {
 	.hero-name {
 		font-size: clamp(72px, 18vw, 160px) !important;
 	}
+
+	/* Toast: tam genişlik + güvenli alan */
 	.toast-wrap {
 		left: 12px;
 		right: 12px;
 		bottom: 16px;
+		bottom: max(16px, calc(env(safe-area-inset-bottom, 0px) + 12px));
 		width: auto;
 	}
+
 	.nav-links .nl {
 		display: none;
 	}
+
+	/* Featured projects: 2 col → 1 col */
 	.featured-grid {
 		grid-template-columns: 1fr !important;
+	}
+
+	/* Hero: alt sağ sayacı mobilde gizle (butonlarla çakışıyor) */
+	.hero-counter {
+		display: none;
+	}
+
+	/* Footer: dikey hizala */
+	.footer-inner {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 8px;
+	}
+
+	/* Bölüm padding azalt */
+	.section-two-col,
+	.section-two-col--equal {
+		gap: 32px !important;
+	}
+}
+
+/* ────────────────────────────────────────────────────────────
+   RESPONSIVE — 480px (küçük telefon)
+──────────────────────────────────────────────────────────── */
+
+@media (max-width: 480px) {
+	/* Section iç padding azalt */
+	.section-inner {
+		padding-left: 16px !important;
+		padding-right: 16px !important;
+	}
+
+	/* Hero padding top azalt */
+	.hero-section {
+		padding-top: 90px !important;
+		padding-bottom: 60px !important;
+		padding-left: 16px !important;
+		padding-right: 16px !important;
+	}
+
+	/* Buton grubu dikey */
+	.hero-cta {
+		flex-direction: column !important;
+		align-items: flex-start !important;
+	}
+
+	/* Featured grid hint banner buton küçült */
+	.featured-grid + div button {
+		width: 100%;
+		justify-content: center;
+	}
+
+	/* Accordion overflow engelle */
+	.acc-btn {
+		overflow: hidden;
+	}
+	.acc-btn > div {
+		min-width: 0;
+		overflow: hidden;
+	}
+	.acc-btn > div span:nth-child(2) {
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
 	}
 }

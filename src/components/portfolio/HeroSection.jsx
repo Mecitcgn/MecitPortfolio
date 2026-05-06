@@ -10,6 +10,7 @@ import { ButtonPrimary, ButtonGhost } from '../ui/Button';
 export default function HeroSection({ onProjectsClick, onDemoHub }) {
 	return (
 		<section
+			className="hero-section"
 			style={{
 				minHeight: '92vh',
 				display: 'flex',
@@ -113,7 +114,7 @@ export default function HeroSection({ onProjectsClick, onDemoHub }) {
 
 			{/* CTA butonları */}
 			<div
-				className="a5"
+				className="a5 hero-cta"
 				style={{ display: 'flex', gap: 14, marginTop: 52, flexWrap: 'wrap' }}
 			>
 				<ButtonPrimary onClick={onProjectsClick}>
@@ -124,7 +125,7 @@ export default function HeroSection({ onProjectsClick, onDemoHub }) {
 
 			{/* Proje sayısı — sağ alt */}
 			<div
-				className="a6"
+				className="a6 hero-counter"
 				style={{ position: 'absolute', bottom: 40, right: 24 }}
 			>
 				<div

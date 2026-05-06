@@ -42,7 +42,10 @@ export default function FeaturedProjects({ onCardClick, onViewAll }) {
 
 	return (
 		<section id="featured" style={{ padding: '60px 0 80px' }}>
-			<div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 24px' }}>
+			<div
+				className="section-inner"
+				style={{ maxWidth: 1200, margin: '0 auto', padding: '0 24px' }}
+			>
 				<Divider style={{ marginBottom: 60 }} />
 
 				{/* Başlık */}
