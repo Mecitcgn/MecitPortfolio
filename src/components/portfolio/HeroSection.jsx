@@ -122,36 +122,6 @@ export default function HeroSection({ onProjectsClick, onDemoHub }) {
 				</ButtonPrimary>
 				<ButtonGhost onClick={onDemoHub}>Projeler ↗</ButtonGhost>
 			</div>
-
-			{/* Proje sayısı — sağ alt */}
-			<div
-				className="a6 hero-counter"
-				style={{ position: 'absolute', bottom: 40, right: 24 }}
-			>
-				<div
-					style={{
-						fontFamily: "'DM Mono', monospace",
-						fontSize: 10,
-						color: 'var(--t3)',
-						letterSpacing: '.18em',
-						textTransform: 'uppercase',
-						marginBottom: 4,
-						textAlign: 'right',
-					}}
-				>
-					Proje
-				</div>
-				<div
-					style={{
-						fontFamily: "'Bebas Neue', sans-serif",
-						fontSize: 56,
-						color: 'var(--t)',
-						lineHeight: 1,
-					}}
-				>
-					{String(PROJECTS.length).padStart(2, '0')}
-				</div>
-			</div>
 		</section>
 	);
 }
