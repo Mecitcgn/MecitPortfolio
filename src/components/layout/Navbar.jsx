@@ -18,7 +18,7 @@ export default function Navbar({ path, navigate }) {
 				</button>
 				<div className="nav-links">
 					<button className="nav-cta" onClick={openDemoHub}>
-						Portfolyo ↗
+						Projeler ↗
 					</button>
 				</div>
 			</div>
