@@ -10,7 +10,7 @@ import './styles/globals.css';
  */
 
 // Demo Hub'ın deploy edildiği URL — Vercel'e deploy ettikten sonra buraya gerçek URL'yi yaz
-export const DEMO_HUB_URL = 'https://mecit-projects.vercel.app';
+export const DEMO_HUB_URL = 'https://mecit-portfolio-projects.vercel.app/';
 
 export default function App() {
 	const { path, navigate } = useRouter();
