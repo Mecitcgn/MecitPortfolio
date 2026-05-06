@@ -8,7 +8,12 @@
 	padding: 0;
 }
 
-:root {
+/* ────────────────────────────────────────────────────────────
+   THEME — DARK (DEFAULT)
+──────────────────────────────────────────────────────────── */
+
+:root,
+[data-theme='dark'] {
 	--bg: #080808;
 	--card: #0e0e0e;
 	--card2: #131313;
@@ -16,35 +21,130 @@
 	--b2: #2a2a2a;
 	--t: #f0ece4;
 	--t2: #888880;
-	--t3: #3e3e3a;
+	--t3: #555550;
 	--acc: #b8ff57;
+	--acc-on: #000000;
 	--abg: rgba(184, 255, 87, 0.07);
 	--abdr: rgba(184, 255, 87, 0.18);
+	--nav-bg: rgba(8, 8, 8, 0.92);
+	--nav-border: rgba(28, 28, 28, 1);
+	--toast-bg: #111111;
+	--toast-border: rgba(42, 42, 42, 1);
+	--toast-accent-border: rgba(184, 255, 87, 1);
+	--search-bg: #0e0e0e;
+	--cover-fallback: linear-gradient(135deg, #111 0%, #1a1a1a 100%);
+	--detail-cover-bg: linear-gradient(
+		135deg,
+		#0f0f0f 0%,
+		#161616 50%,
+		#0f0f0f 100%
+	);
 	--fd: 'Bebas Neue', sans-serif;
 	--fm: 'DM Mono', monospace;
 	--fb: 'Outfit', sans-serif;
 }
 
+/* ────────────────────────────────────────────────────────────
+   THEME — LIGHT
+──────────────────────────────────────────────────────────── */
+
+[data-theme='light'] {
+	--bg: #f5f4ef;
+	--card: #ffffff;
+	--card2: #f0efe9;
+	--b1: #e2e0d8;
+	--b2: #c8c6bc;
+	--t: #0d0d0a;
+	--t2: #5a5a52;
+	--t3: #8a8a80;
+	--acc: #3d6600;
+	--acc-on: #ffffff;
+	--abg: rgba(61, 102, 0, 0.08);
+	--abdr: rgba(61, 102, 0, 0.25);
+	--nav-bg: rgba(245, 244, 239, 0.94);
+	--nav-border: rgba(226, 224, 216, 1);
+	--toast-bg: #ffffff;
+	--toast-border: rgba(226, 224, 216, 1);
+	--toast-accent-border: rgba(61, 102, 0, 1);
+	--search-bg: #ffffff;
+	--cover-fallback: linear-gradient(135deg, #e8e8e2 0%, #f0efe9 100%);
+	--detail-cover-bg: linear-gradient(
+		135deg,
+		#ebebe5 0%,
+		#f0efe9 50%,
+		#ebebe5 100%
+	);
+	--fd: 'Bebas Neue', sans-serif;
+	--fm: 'DM Mono', monospace;
+	--fb: 'Outfit', sans-serif;
+}
+
+/* ────────────────────────────────────────────────────────────
+   SYSTEM PREFERENCE FALLBACK
+──────────────────────────────────────────────────────────── */
+
+@media (prefers-color-scheme: light) {
+	:root:not([data-theme]) {
+		--bg: #f5f4ef;
+		--card: #ffffff;
+		--card2: #f0efe9;
+		--b1: #e2e0d8;
+		--b2: #c8c6bc;
+		--t: #0d0d0a;
+		--t2: #5a5a52;
+		--t3: #8a8a80;
+		--acc: #3d6600;
+		--acc-on: #ffffff;
+		--abg: rgba(61, 102, 0, 0.08);
+		--abdr: rgba(61, 102, 0, 0.25);
+		--nav-bg: rgba(245, 244, 239, 0.94);
+		--nav-border: rgba(226, 224, 216, 1);
+		--toast-bg: #ffffff;
+		--toast-border: rgba(226, 224, 216, 1);
+		--toast-accent-border: rgba(61, 102, 0, 1);
+		--search-bg: #ffffff;
+		--cover-fallback: linear-gradient(135deg, #e8e8e2 0%, #f0efe9 100%);
+		--detail-cover-bg: linear-gradient(
+			135deg,
+			#ebebe5 0%,
+			#f0efe9 50%,
+			#ebebe5 100%
+		);
+	}
+}
+
+/* ────────────────────────────────────────────────────────────
+   BASE
+──────────────────────────────────────────────────────────── */
+
 html {
 	scroll-behavior: smooth;
+	/* overflow-x here — DOES NOT break position:fixed unlike body */
+	overflow-x: hidden;
 }
+
 body {
 	background: var(--bg);
 	color: var(--t);
 	font-family: var(--fb);
 	-webkit-font-smoothing: antialiased;
-	overflow-x: hidden;
+	transition:
+		background 0.35s ease,
+		color 0.35s ease;
 }
+
 ::selection {
 	background: var(--acc);
-	color: #000;
+	color: var(--acc-on);
 }
+
 ::-webkit-scrollbar {
 	width: 2px;
 }
 ::-webkit-scrollbar-thumb {
 	background: var(--b2);
 }
+
 a,
 button {
 	font-family: inherit;
@@ -54,7 +154,6 @@ button {
    KEYFRAMES
 ──────────────────────────────────────────────────────────── */
 
-/* Genel fade + yukarıdan */
 @keyframes fu {
 	from {
 		opacity: 0;
@@ -66,7 +165,6 @@ button {
 	}
 }
 
-/* Toast giriş */
 @keyframes tIn {
 	from {
 		opacity: 0;
@@ -78,7 +176,6 @@ button {
 	}
 }
 
-/* Toast çıkış */
 @keyframes tOut {
 	from {
 		opacity: 1;
@@ -90,7 +187,6 @@ button {
 	}
 }
 
-/* Toast progress */
 @keyframes pg {
 	from {
 		width: 0;
@@ -100,7 +196,6 @@ button {
 	}
 }
 
-/* Clip-path reveal (soldan sağa açılma) */
 @keyframes clipReveal {
 	from {
 		clip-path: inset(0 100% 0 0);
@@ -112,7 +207,6 @@ button {
 	}
 }
 
-/* Scale + fade */
 @keyframes scaleFade {
 	from {
 		opacity: 0;
@@ -124,7 +218,6 @@ button {
 	}
 }
 
-/* Soft pulse (glow efekti için) */
 @keyframes pulse {
 	0%,
 	100% {
@@ -135,7 +228,6 @@ button {
 	}
 }
 
-/* Cursor dot blink */
 @keyframes blink {
 	0%,
 	100% {
@@ -146,7 +238,6 @@ button {
 	}
 }
 
-/* Float (hafif yukarı-aşağı salınım) */
 @keyframes float {
 	0%,
 	100% {
@@ -154,6 +245,18 @@ button {
 	}
 	50% {
 		transform: translateY(-6px);
+	}
+}
+
+@keyframes themePop {
+	0% {
+		transform: scale(1);
+	}
+	50% {
+		transform: scale(1.22) rotate(15deg);
+	}
+	100% {
+		transform: scale(1) rotate(0deg);
 	}
 }
 
@@ -184,7 +287,6 @@ button {
    SCROLL REVEAL SİSTEMİ
 ──────────────────────────────────────────────────────────── */
 
-/* Temel: yukarıdan aşağıya */
 .reveal {
 	opacity: 0;
 	transform: translateY(56px);
@@ -197,7 +299,6 @@ button {
 	transform: translateY(0);
 }
 
-/* Soldan sağa */
 .reveal-left {
 	opacity: 0;
 	transform: translateX(-48px);
@@ -210,7 +311,6 @@ button {
 	transform: translateX(0);
 }
 
-/* Sağdan sola */
 .reveal-right {
 	opacity: 0;
 	transform: translateX(48px);
@@ -223,7 +323,6 @@ button {
 	transform: translateX(0);
 }
 
-/* Scale reveal (kartlar için) */
 .reveal-child {
 	opacity: 0;
 	transform: translateY(44px) scale(0.96);
@@ -236,7 +335,6 @@ button {
 	transform: translateY(0) scale(1);
 }
 
-/* Clip-path soldan açılma (başlıklar için) */
 .reveal-clip {
 	opacity: 0;
 	clip-path: inset(0 100% 0 0);
@@ -249,7 +347,6 @@ button {
 	clip-path: inset(0 0% 0 0);
 }
 
-/* Divider animasyonu */
 .reveal-line {
 	transform: scaleX(0);
 	transform-origin: left;
@@ -259,7 +356,6 @@ button {
 	transform: scaleX(1);
 }
 
-/* Sayı say animasyonu (SkillBar gibi) */
 .reveal-up {
 	opacity: 0;
 	transform: translateY(20px);
@@ -301,13 +397,16 @@ button {
 	position: sticky;
 	top: 0;
 	z-index: 100;
-	background: rgba(8, 8, 8, 0.9);
+	background: var(--nav-bg);
 	backdrop-filter: blur(20px);
 	-webkit-backdrop-filter: blur(20px);
-	border-bottom: 1px solid var(--b1);
+	border-bottom: 1px solid var(--nav-border);
 	height: 60px;
 	display: flex;
 	align-items: center;
+	transition:
+		background 0.35s ease,
+		border-color 0.35s ease;
 }
 .nav-in {
 	max-width: 1200px;
@@ -332,7 +431,7 @@ button {
 }
 .nav-logo:hover {
 	opacity: 0.8;
-	text-shadow: 0 0 20px rgba(184, 255, 87, 0.5);
+	text-shadow: 0 0 20px color-mix(in srgb, var(--acc) 50%, transparent);
 }
 .nav-links {
 	display: flex;
@@ -377,15 +476,41 @@ button {
 	letter-spacing: 0.1em;
 	text-transform: uppercase;
 	background: var(--acc);
-	color: #000;
+	color: var(--acc-on);
 	border: none;
 	border-radius: 2px;
 	cursor: pointer;
 	transition: all 0.25s;
 }
 .nav-cta:hover {
-	background: #fff;
-	box-shadow: 0 0 20px rgba(184, 255, 87, 0.3);
+	opacity: 0.85;
+	box-shadow: 0 0 20px color-mix(in srgb, var(--acc) 40%, transparent);
+}
+
+/* ─── Theme Toggle ─── */
+.theme-toggle {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 32px;
+	height: 32px;
+	background: transparent;
+	border: 1px solid var(--b2);
+	border-radius: 50%;
+	cursor: pointer;
+	color: var(--t2);
+	font-size: 14px;
+	transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+	flex-shrink: 0;
+}
+.theme-toggle:hover {
+	border-color: var(--acc);
+	color: var(--acc);
+	background: var(--abg);
+	box-shadow: 0 0 12px color-mix(in srgb, var(--acc) 20%, transparent);
+}
+.theme-toggle.animating svg {
+	animation: themePop 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 /* ────────────────────────────────────────────────────────────
@@ -398,7 +523,7 @@ button {
 	gap: 8px;
 	padding: 12px 28px;
 	background: var(--acc);
-	color: #000;
+	color: var(--acc-on);
 	font-family: var(--fm);
 	font-size: 12px;
 	font-weight: 500;
@@ -421,10 +546,10 @@ button {
 }
 .btn-p:hover {
 	transform: translateY(-3px);
-	box-shadow: 0 8px 24px rgba(184, 255, 87, 0.3);
+	box-shadow: 0 8px 24px color-mix(in srgb, var(--acc) 35%, transparent);
 }
 .btn-p:hover::before {
-	opacity: 0.12;
+	opacity: 0.1;
 }
 .btn-p:active {
 	transform: translateY(-1px);
@@ -448,8 +573,8 @@ button {
 }
 .btn-g:hover {
 	color: var(--t);
-	border-color: var(--t2);
-	background: rgba(255, 255, 255, 0.03);
+	border-color: var(--t3);
+	background: color-mix(in srgb, var(--t) 4%, transparent);
 }
 
 .btn-a {
@@ -470,8 +595,8 @@ button {
 }
 .btn-a:hover {
 	background: var(--acc);
-	color: #000;
-	box-shadow: 0 4px 16px rgba(184, 255, 87, 0.25);
+	color: var(--acc-on);
+	box-shadow: 0 4px 16px color-mix(in srgb, var(--acc) 30%, transparent);
 }
 
 /* ────────────────────────────────────────────────────────────
@@ -491,10 +616,12 @@ button {
 }
 .pc:hover {
 	transform: translateY(-6px);
+	border-color: var(--b2);
+	box-shadow: 0 20px 60px color-mix(in srgb, var(--acc) 6%, transparent);
 }
 .pc-cover {
 	aspect-ratio: 16/10;
-	background: linear-gradient(135deg, #111 0%, #161616 100%);
+	background: var(--cover-fallback);
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -502,12 +629,11 @@ button {
 	overflow: hidden;
 }
 
-/* Hover overlay */
 .pc-cover::after {
 	content: '';
 	position: absolute;
 	inset: 0;
-	background: rgba(0, 0, 0, 0.2);
+	background: rgba(0, 0, 0, 0.18);
 	opacity: 0;
 	transition: opacity 0.3s;
 	z-index: 2;
@@ -532,14 +658,13 @@ button {
 	transform: scale(1.08);
 }
 
-/* Hover arrow */
 .pc-arrow {
 	position: absolute;
 	top: 16px;
 	right: 16px;
 	font-family: var(--fm);
 	font-size: 14px;
-	color: var(--t);
+	color: #fff;
 	z-index: 4;
 	opacity: 0;
 	transform: translateY(4px);
@@ -571,7 +696,7 @@ button {
 	justify-content: center;
 }
 .detail-cover--empty {
-	background: linear-gradient(135deg, #0f0f0f 0%, #161616 50%, #0f0f0f 100%);
+	background: var(--detail-cover-bg);
 	border: 1px solid var(--b1);
 }
 .detail-cover__grid {
@@ -591,6 +716,7 @@ button {
 	position: relative;
 	z-index: 2;
 	user-select: none;
+	color: var(--t);
 }
 
 /* ────────────────────────────────────────────────────────────
@@ -617,7 +743,7 @@ button {
 .fb.act {
 	background: var(--acc);
 	border-color: var(--acc);
-	color: #000;
+	color: var(--acc-on);
 }
 
 /* ────────────────────────────────────────────────────────────
@@ -625,7 +751,7 @@ button {
 ──────────────────────────────────────────────────────────── */
 
 .search {
-	background: var(--card);
+	background: var(--search-bg);
 	border: 1px solid var(--b1);
 	color: var(--t);
 	font-family: var(--fm);
@@ -643,7 +769,7 @@ button {
 }
 .search:focus {
 	border-color: var(--acc);
-	box-shadow: 0 0 0 3px rgba(184, 255, 87, 0.08);
+	box-shadow: 0 0 0 3px color-mix(in srgb, var(--acc) 12%, transparent);
 }
 
 /* ────────────────────────────────────────────────────────────
@@ -678,6 +804,10 @@ button {
 
 /* ────────────────────────────────────────────────────────────
    TOAST
+   FIX: Rendered inside ToastProvider (near root), z-index 9999.
+   position:fixed is on the .toast-wrap itself — overflow-x:hidden
+   was on body which broke fixed positioning on iOS Safari.
+   Moved overflow-x:hidden to html instead (safe for fixed children).
 ──────────────────────────────────────────────────────────── */
 
 .toast-wrap {
@@ -686,18 +816,35 @@ button {
 	right: 24px;
 	z-index: 9999;
 	width: 340px;
+	/* Force compositing layer — prevents clipping by ancestor transforms */
+	will-change: transform;
+	pointer-events: none;
 }
 .toast-box {
-	background: #111;
-	border: 1px solid var(--b2);
-	border-left: 3px solid var(--acc);
+	background: var(--toast-bg);
+	border: 1px solid var(--toast-border);
+	border-left: 3px solid var(--toast-accent-border);
 	border-radius: 4px;
 	padding: 18px;
-	box-shadow: 0 8px 48px rgba(0, 0, 0, 0.9);
+	box-shadow:
+		0 8px 48px rgba(0, 0, 0, 0.35),
+		0 2px 8px rgba(0, 0, 0, 0.15);
 	animation: tIn 0.35s cubic-bezier(0.17, 0.67, 0.44, 1.01) both;
 	position: relative;
 	overflow: hidden;
+	pointer-events: all;
+	/* Light mode needs shadow refinement */
+	transition:
+		background 0.35s ease,
+		border-color 0.35s ease;
 }
+
+[data-theme='light'] .toast-box {
+	box-shadow:
+		0 8px 48px rgba(0, 0, 0, 0.12),
+		0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
 .toast-box.out {
 	animation: tOut 0.3s ease forwards;
 }
@@ -730,6 +877,7 @@ button {
 	.toast-wrap {
 		left: 12px;
 		right: 12px;
+		bottom: 16px;
 		width: auto;
 	}
 	.nav-links .nl {
