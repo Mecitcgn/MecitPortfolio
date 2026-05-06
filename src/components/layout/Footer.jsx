@@ -1,4 +1,5 @@
 import { ButtonAccent } from '../ui/Button';
+import logo from '../../assets/MecitLogo.png';
 
 export default function Footer({ navigate, openDemoHub }) {
 	return (
@@ -12,8 +13,8 @@ export default function Footer({ navigate, openDemoHub }) {
 		>
 			<div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
 				<img
-					src="src/assets/MecitLogo.png"
-					alt=""
+					src={logo}
+					alt="Mecit Logo"
 					style={{
 						height: 32,
 						width: 'auto',

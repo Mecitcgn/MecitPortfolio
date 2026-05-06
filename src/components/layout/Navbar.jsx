@@ -17,9 +17,6 @@ export default function Navbar({ path, navigate }) {
 					<img src={logo} alt="Mecit Logo" />
 				</button>
 				<div className="nav-links">
-					<button className="nl" onClick={openDemoHub}>
-						Projeler ↗
-					</button>
 					<button className="nav-cta" onClick={openDemoHub}>
 						Portfolyo ↗
 					</button>
