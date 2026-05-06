@@ -111,9 +111,9 @@ export default function FeaturedProjects({ onCardClick, onViewAll }) {
 							flex: 1,
 						}}
 					>
-						Projelere tıklayarak Demo Hub'a yönlendirileceksiniz.
+						Projelere tıklayarak Projeler'e yönlendirileceksiniz.
 					</span>
-					<ButtonAccent onClick={onViewAll}>Demo Hub'a Git →</ButtonAccent>
+					<ButtonAccent onClick={onViewAll}>Projeler'e Git →</ButtonAccent>
 				</div>
 			</div>
 		</section>

@@ -5,7 +5,7 @@ import { ButtonPrimary, ButtonGhost } from '../ui/Button';
 /**
  * HeroSection — portfolyo sayfasının büyük giriş bölümü.
  * onProjectsClick → "Projelerimi Gör" butonuna tıklandığında
- * onDemoHub → "Demo Hub" butonuna tıklandığında
+ * onDemoHub → "Projeler" butonuna tıklandığında
  */
 export default function HeroSection({ onProjectsClick, onDemoHub }) {
 	return (
@@ -119,7 +119,7 @@ export default function HeroSection({ onProjectsClick, onDemoHub }) {
 				<ButtonPrimary onClick={onProjectsClick}>
 					Projelerimi Gör ↓
 				</ButtonPrimary>
-				<ButtonGhost onClick={onDemoHub}>Demo Hub ↗</ButtonGhost>
+				<ButtonGhost onClick={onDemoHub}>Projeler ↗</ButtonGhost>
 			</div>
 
 			{/* Proje sayısı — sağ alt */}

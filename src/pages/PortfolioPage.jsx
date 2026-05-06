@@ -10,8 +10,8 @@ import Footer from '../components/layout/Footer';
  * PortfolioPage — ana portfolyo sayfası (/)
  * Hero → Featured Projects → Achievements → Skills → Footer
  *
- * FeaturedProjects kartlarına tıklanınca Demo Hub toast'u gösterilir.
- * Demo Hub artık ayrı bir site (DEMO_HUB_URL).
+ * FeaturedProjects kartlarına tıklanınca Projeler toast'u gösterilir.
+ * Projeler artık ayrı bir site (DEMO_HUB_URL).
  */
 export default function PortfolioPage({ navigate }) {
 	const showToast = useToast();
@@ -19,8 +19,8 @@ export default function PortfolioPage({ navigate }) {
 	const openDemoHub = () => window.open(DEMO_HUB_URL, '_blank');
 
 	const handleCardClick = () => {
-		showToast('Projeyi canlı olarak görmek için Demo Hub sitesine gidin.', {
-			label: "Demo Hub'a Git ↗",
+		showToast('Projeyi canlı olarak görmek için Projeler sitesine gidin.', {
+			label: "Projeler'e Git ↗",
 			fn: openDemoHub,
 		});
 	};

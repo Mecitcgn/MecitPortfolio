@@ -10,15 +10,17 @@ export default function Footer({ navigate, openDemoHub }) {
 				margin: '0 auto',
 			}}
 		>
-			<div
-				style={{
-					display: 'flex',
-					justifyContent: 'space-between',
-					alignItems: 'center',
-					flexWrap: 'wrap',
-					gap: 12,
-				}}
-			>
+			<div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+				<img
+					src="../../../assets/MecitLogo.png"
+					alt=""
+					style={{
+						height: 20,
+						width: 'auto',
+						objectFit: 'contain',
+						opacity: 0.5,
+					}}
+				/>
 				<span
 					style={{
 						fontFamily: "'DM Mono', monospace",
@@ -41,7 +43,7 @@ export default function Footer({ navigate, openDemoHub }) {
 						Frontend Developer
 					</span>
 					<ButtonAccent style={{ padding: '5px 12px' }} onClick={openDemoHub}>
-						Demo Hub ↗
+						Projeler ↗
 					</ButtonAccent>
 				</div>
 			</div>

@@ -31,6 +31,7 @@ export default function Achievements() {
 									fontFamily: "'Bebas Neue', sans-serif",
 									fontSize: 26,
 									letterSpacing: '.03em',
+									color: 'var(--t)',
 								}}
 							>
 								{group.title}

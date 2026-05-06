@@ -6,10 +6,10 @@ import './styles/globals.css';
 
 /**
  * App — kök bileşen.
- * Sadece portfolyo sayfası var, Demo Hub ayrı bir site.
+ * Sadece portfolyo sayfası var, Projeler ayrı bir site.
  */
 
-// Demo Hub'ın deploy edildiği URL — Vercel'e deploy ettikten sonra buraya gerçek URL'yi yaz
+// Projeler'ın deploy edildiği URL — Vercel'e deploy ettikten sonra buraya gerçek URL'yi yaz
 export const DEMO_HUB_URL = 'https://mecit-portfolio-projects.vercel.app/';
 
 export default function App() {

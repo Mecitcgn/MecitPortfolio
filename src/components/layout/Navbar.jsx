@@ -2,7 +2,7 @@ import { DEMO_HUB_URL } from '../../App';
 
 /**
  * Navbar — sticky üst navigasyon.
- * Demo Hub artık dış siteye yönlendiriyor.
+ * Projeler artık dış siteye yönlendiriyor.
  */
 
 export default function Navbar({ path, navigate }) {
@@ -14,7 +14,7 @@ export default function Navbar({ path, navigate }) {
 		<nav className="nav">
 			<div className="nav-in">
 				<button className="nav-logo" onClick={() => navigate('/')}>
-					MC
+					<img src="../../../assets/MecitLogo.png" alt="" />
 				</button>
 				<div className="nav-links">
 					<button
@@ -24,7 +24,7 @@ export default function Navbar({ path, navigate }) {
 						Portfolyo
 					</button>
 					<button className="nl" onClick={openDemoHub}>
-						Demo Hub ↗
+						Projeler ↗
 					</button>
 					<button className="nav-cta" onClick={openDemoHub}>
 						Hub ↗
