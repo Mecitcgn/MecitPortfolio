@@ -12,10 +12,10 @@ export default function Footer({ navigate, openDemoHub }) {
 		>
 			<div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
 				<img
-					src="../../../assets/MecitLogo.png"
+					src="src/assets/MecitLogo.png"
 					alt=""
 					style={{
-						height: 20,
+						height: 32,
 						width: 'auto',
 						objectFit: 'contain',
 						opacity: 0.5,
