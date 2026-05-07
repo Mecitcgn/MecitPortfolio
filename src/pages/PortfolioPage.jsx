@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useToast } from '../hooks/useToast';
 import { DEMO_HUB_URL } from '../App';
 import HeroSection from '../components/portfolio/HeroSection';
@@ -10,19 +11,33 @@ import Footer from '../components/layout/Footer';
  * PortfolioPage — ana portfolyo sayfası (/)
  * Hero → Featured Projects → Achievements → Skills → Footer
  *
- * FeaturedProjects kartlarına tıklanınca Projeler toast'u gösterilir.
- * Projeler artık ayrı bir site (DEMO_HUB_URL).
+ * Sayfa yüklenince bağımsız bir toast gösterilir: "Tüm projeleri görmek için..."
+ * Kart tıklaması → projenin demoUrl'ini yeni sekmede açar.
  */
 export default function PortfolioPage({ navigate }) {
 	const showToast = useToast();
 
 	const openDemoHub = () => window.open(DEMO_HUB_URL, '_blank');
 
-	const handleCardClick = () => {
-		showToast('Projeyi canlı olarak görmek için Projeler sitesine gidin.', {
-			label: "Projeler'e Git ↗",
-			fn: openDemoHub,
-		});
+	// Sayfa yüklenince bağımsız toast — kart tıklamasından tamamen ayrı
+	useEffect(() => {
+		const timer = setTimeout(() => {
+			showToast(
+				'Tüm projelerimi görmek ister misiniz? Projeler sayfasına göz atın!',
+				{
+					label: "Projeler'e Git ↗",
+					fn: openDemoHub,
+				},
+			);
+		}, 2200);
+		return () => clearTimeout(timer);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
+
+	// Kart tıklaması: projenin demoUrl'ini yeni sekmede aç
+	const handleCardClick = (project) => {
+		const url = project?.demoUrl || DEMO_HUB_URL;
+		window.open(url, '_blank', 'noopener,noreferrer');
 	};
 
 	const scrollToFeatured = () => {
