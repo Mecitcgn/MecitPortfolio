@@ -18,7 +18,7 @@ export default function SkillsSection() {
 				<div className="section-two-col--equal">
 					{/* Sol: başlık */}
 					<div ref={titleRef} className="reveal-left">
-						<SectionTitle label="Yetenekler" title="Skills" />
+						<SectionTitle label="Güncel" title="Yetenekler" />
 						<p
 							style={{
 								fontFamily: "'DM Mono', monospace",

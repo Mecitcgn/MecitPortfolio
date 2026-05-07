@@ -61,7 +61,7 @@ export default function FeaturedProjects({ onCardClick, onViewAll }) {
 						gap: 16,
 					}}
 				>
-					<SectionTitle label="Seçili Projeler" title="Featured Work" />
+					<SectionTitle label="Seçili Proje" title="Vitrin" />
 					<ButtonGhost onClick={onViewAll}>Tümünü Gör ↗</ButtonGhost>
 				</div>
 
@@ -71,7 +71,7 @@ export default function FeaturedProjects({ onCardClick, onViewAll }) {
 					className="featured-grid"
 					style={{
 						display: 'grid',
-						gridTemplateColumns: 'repeat(2, 1fr)',
+						gridTemplateColumns: 'repeat(1, 1fr)',
 						gap: 20,
 					}}
 				>

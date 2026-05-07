@@ -17,7 +17,7 @@ export default function AchievementsSection() {
 				<div className="section-two-col">
 					{/* Sol: başlık */}
 					<div ref={titleRef} className="reveal-left">
-						<SectionTitle label="Başarılar" title="Achievements" />
+						<SectionTitle label="Başarılar" title="Öne Çıkanlar" />
 						<p
 							style={{
 								fontFamily: "'DM Mono', monospace",

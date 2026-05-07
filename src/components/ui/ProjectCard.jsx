@@ -272,21 +272,40 @@ function ProjectCover({ cover, num }) {
  */
 export default function ProjectCard({ project, onClick }) {
 	const hasCover = !!project.cover;
+	const hasImage = !!project.coverImage;
 
 	return (
 		<div className="pc" onClick={() => onClick(project)}>
 			<div className="pc-cover">
-				{hasCover ? (
+				{/* Resim varsa göster, yoksa gradient/pattern cover */}
+				{hasImage ? (
+					<img
+						src={project.coverImage}
+						alt={project.title}
+						style={{
+							position: 'absolute',
+							inset: 0,
+							width: '100%',
+							height: '100%',
+							objectFit: 'cover',
+							objectPosition: 'center',
+						}}
+					/>
+				) : hasCover ? (
 					<ProjectCover cover={project.cover} num={project.num} />
 				) : null}
 
-				{/* Proje numarası */}
-				<span
-					className="pc-num"
-					style={hasCover ? { color: project.cover.accent, opacity: 0.18 } : {}}
-				>
-					{project.num}
-				</span>
+				{/* Resim varken numara gizlenir, yoksa gösterilir */}
+				{!hasImage && (
+					<span
+						className="pc-num"
+						style={
+							hasCover ? { color: project.cover.accent, opacity: 0.18 } : {}
+						}
+					>
+						{project.num}
+					</span>
+				)}
 
 				{/* Hover arrow */}
 				<div className="pc-arrow">↗</div>
@@ -301,7 +320,11 @@ export default function ProjectCard({ project, onClick }) {
 						marginBottom: 10,
 					}}
 				>
-					<TagGray>{project.category}</TagGray>
+					<div style={{ display: 'flex', gap: 4, flexWrap: 'wrap' }}>
+						{[].concat(project.category).map((cat) => (
+							<TagGray key={cat}>{cat}</TagGray>
+						))}
+					</div>
 					{hasCover && (
 						<span
 							style={{
