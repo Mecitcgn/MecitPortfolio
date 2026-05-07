@@ -49,13 +49,14 @@ export const ACHIEVEMENTS = [
 				name: 'Responsive Web Design',
 				issuer: 'FreeCodeCamp',
 				year: '2024',
-				detail: '300+ saatlik müfredat',
+				detail: 'Legacy Responsive Web Design V8 Certification',
 			},
 			{
 				name: 'JS Algorithms & Data Structures',
 				issuer: 'FreeCodeCamp',
 				year: '2024',
-				detail: '300+ saatlik müfredat',
+				detail:
+					'Legacy JavaScript Algorithms and Data Structures V7 Certification',
 			},
 		],
 	},
@@ -71,9 +72,9 @@ export const ACHIEVEMENTS = [
 				detail: 'Ulusal yarışma',
 			},
 			{
-				name: 'Hackathon Istanbul',
-				org: 'Istanbul Tech Community',
-				year: '2024',
+				name: 'Hackathon Esenyurt',
+				org: 'Esenyurt Tech Community',
+				year: '2025',
 				detail: '24 saatlik hackathon',
 			},
 		],
@@ -84,9 +85,9 @@ export const ACHIEVEMENTS = [
 		title: 'Kazandığım Yarışmalar',
 		items: [
 			{
-				name: 'Okul Geneli Web Tasarım',
-				org: 'Okulum',
-				year: '2024',
+				name: 'Hackathon Esenyurt',
+				org: 'Esenyurt Tech Community',
+				year: '2025',
 				detail: 'Birincilik ödülü 🏆',
 			},
 		],
