@@ -68,7 +68,7 @@ export const ACHIEVEMENTS = [
 			{
 				name: 'Teknofest Web Tasarım',
 				org: 'Teknofest',
-				year: '2024',
+				year: '2026',
 				detail: 'Ulusal yarışma',
 			},
 			{
