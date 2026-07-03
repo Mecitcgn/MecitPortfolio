@@ -2,6 +2,7 @@
 // DATA LAYER — Tek merkezi veri yönetimi
 // ─────────────────────────────────────────────────────────────────────────────
 import OkulYanimdaImg from '../assets/OkulYanimda.png';
+import GunyeliGrupImg from '../assets/GunyeliGrup.png';
 export const PROJECTS = [
 	{
 		id: 'okul-yanimda',
@@ -26,6 +27,24 @@ export const PROJECTS = [
 			pattern: 'circles',
 		},
 		demoUrl: 'https://okulyanimdaf.vercel.app',
+	},
+	{
+		id: 'gunyeli-grup',
+		num: '02',
+		title: 'Günyeli Grup',
+		description:
+			'IdeaSoft e-ticaret altyapısı ile hazırlanan online mağaza. Elektrik, batarya ve yaşam ürünleri satışının yanı sıra 3D baskı ile yedek parça üretimi hizmeti sunan kurumsal e-ticaret sitesi.',
+		featured: true,
+		category: ['e-ticaret', 'frontend', 'backend'],
+		tech: ['IdeaSoft', 'HTML', 'CSS', 'JavaScript'],
+		coverImage: GunyeliGrupImg,
+		cover: {
+			gradient:
+				'linear-gradient(135deg, #1c1008 0%, #3d2814 40%, #1a1208 100%)',
+			accent: '#f59e0b',
+			pattern: 'grid',
+		},
+		demoUrl: 'https://www.gunyeligrup.com/',
 	},
 ];
 

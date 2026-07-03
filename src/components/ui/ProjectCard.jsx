@@ -270,27 +270,59 @@ function ProjectCover({ cover, num }) {
 /**
  * ProjectCard — grid içinde kullanılan proje kartı.
  */
+const coverImgStyle = {
+	width: '100%',
+	height: '100%',
+	objectFit: 'cover',
+	objectPosition: 'center',
+};
+
 export default function ProjectCard({ project, onClick }) {
 	const hasCover = !!project.cover;
-	const hasImage = !!project.coverImage;
+	const coverImages = project.coverImages?.length
+		? project.coverImages
+		: project.coverImage
+			? [project.coverImage]
+			: [];
+	const hasImage = coverImages.length > 0;
 
 	return (
 		<div className="pc" onClick={() => onClick(project)}>
 			<div className="pc-cover">
 				{/* Resim varsa göster, yoksa gradient/pattern cover */}
 				{hasImage ? (
-					<img
-						src={project.coverImage}
-						alt={project.title}
-						style={{
-							position: 'absolute',
-							inset: 0,
-							width: '100%',
-							height: '100%',
-							objectFit: 'cover',
-							objectPosition: 'center',
-						}}
-					/>
+					coverImages.length > 1 ? (
+						<div
+							style={{
+								position: 'absolute',
+								inset: 0,
+								display: 'flex',
+							}}
+						>
+							{coverImages.map((src, i) => (
+								<img
+									key={i}
+									src={src}
+									alt={`${project.title} önizleme ${i + 1}`}
+									style={{
+										...coverImgStyle,
+										flex: 1,
+										minWidth: 0,
+									}}
+								/>
+							))}
+						</div>
+					) : (
+						<img
+							src={coverImages[0]}
+							alt={project.title}
+							style={{
+								position: 'absolute',
+								inset: 0,
+								...coverImgStyle,
+							}}
+						/>
+					)
 				) : hasCover ? (
 					<ProjectCover cover={project.cover} num={project.num} />
 				) : null}
